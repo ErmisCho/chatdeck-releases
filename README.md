@@ -29,3 +29,7 @@ the first launch is blocked: open **System Settings → Privacy & Security** and
 **Open Anyway**. If macOS instead says the app "is damaged", run
 `xattr -dr com.apple.quarantine /Applications/ChatDeck.app` in Terminal once. Mac updates are
 manual for now: download the new dmg.
+
+## About
+
+Made by Ermis Chorinopoulos. Open to new roles: [LinkedIn](https://www.linkedin.com/in/ermischo/).
