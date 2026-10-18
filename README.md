@@ -22,7 +22,7 @@ Run `ChatDeck-windows-setup.exe`. It installs for you alone, needs no administra
 and updates itself from Settings. The installer is not code-signed yet, so Windows may say
 **"Windows protected your PC"**: choose **More info → Run anyway**.
 
-### macOS
+### macOS (Apple Silicon, M1 and later)
 
 Open `ChatDeck-mac.dmg` and drag ChatDeck to Applications. The app is not notarized yet, so
 the first launch is blocked: open **System Settings → Privacy & Security** and choose
