@@ -4,7 +4,7 @@
 desktop app that turns both into one multi-pane, multi-tab working surface: compare answers
 side by side, keep projects in separate tab groups, and open terminal tabs next to your chats.
 
-![ChatDeck with two ChatGPT panes side by side](chatdeck-preview.webp)
+![ChatDeck with a chat and a second chat proposing a colour palette, side by side](media/hero.webp)
 
 > ChatDeck works with ChatGPT and Claude and needs your own account with whichever you use.
 > It is not affiliated with, endorsed by, or sponsored by OpenAI or Anthropic.

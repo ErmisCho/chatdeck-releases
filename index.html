@@ -3,36 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ChatDeck - Download</title>
-  <meta name="description" content="ChatDeck: your ChatGPT and Claude conversations, arranged like a workspace. Free download for Windows and macOS.">
-  <meta property="og:title" content="ChatDeck">
-  <meta property="og:description" content="Your ChatGPT and Claude conversations, arranged like a workspace. Free for Windows and macOS.">
-  <meta property="og:image" content="https://ermischo.github.io/chatdeck-releases/chatdeck-preview.webp">
+  <title>ChatDeck - ChatGPT and Claude in one desktop workspace</title>
+  <meta name="description" content="ChatDeck puts ChatGPT, Claude and your terminal side by side in resizable panes, with tabs and project groups. Free for Windows and macOS.">
+  <meta name="theme-color" content="#0b0c10">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ermischo.github.io/chatdeck-releases/">
+  <meta property="og:title" content="ChatDeck - ChatGPT and Claude in one desktop workspace">
+  <meta property="og:description" content="Side-by-side panes, tabs, project groups and a terminal. Free for Windows and macOS.">
+  <meta property="og:image" content="https://ermischo.github.io/chatdeck-releases/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-soft: #f6f7f8;
-      --panel: #ffffff;
-      --text: #111418;
-      --muted: #5c6670;
-      --line: #e3e6ea;
-      --accent: #0d8f6f;
-      --accent-hover: #0a7a5e;
+      --bg: #0b0c10;
+      --bg-2: #101218;
+      --panel: #14161d;
+      --panel-2: #1a1d26;
+      --text: #eef0f6;
+      --muted: #9aa1b2;
+      --faint: #6b7183;
+      --line: #23262f;
+      --accent: #6d6ef6;
+      --accent-2: #8b8cff;
       --accent-text: #ffffff;
-      --shadow: 0 1px 2px rgba(16, 24, 32, 0.06), 0 8px 24px rgba(16, 24, 32, 0.06);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0b0d0f;
-        --bg-soft: #121518;
-        --panel: #15191d;
-        --text: #eceef0;
-        --muted: #9aa3ab;
-        --line: #252b31;
-        --accent: #12a882;
-        --accent-hover: #17bd93;
-        --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
-      }
+      --radius: 14px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -40,107 +40,145 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font: 16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    a { color: var(--accent); }
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+    a { color: var(--accent-2); }
+    img, video { display: block; max-width: 100%; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+    :focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; border-radius: 6px; }
 
-    header { border-bottom: 1px solid var(--line); }
-    header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; color: var(--text); text-decoration: none; }
-    .logo { width: 28px; height: 28px; border-radius: 7px; background: var(--accent); display: grid; place-items: center; }
-    .logo svg { width: 16px; height: 16px; }
-    nav { display: flex; gap: 20px; font-size: 0.92rem; }
+    /* Header */
+    header { position: sticky; top: 0; z-index: 10; background: rgba(11, 12, 16, 0.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+    .brand img { width: 30px; height: 30px; }
+    nav { display: flex; align-items: center; gap: 22px; font-size: 0.92rem; }
     nav a { color: var(--muted); text-decoration: none; }
     nav a:hover { color: var(--text); }
-    @media (max-width: 560px) { nav .optional { display: none; } }
+    nav .in { display: inline-flex; }
+    nav .in svg { width: 19px; height: 19px; }
+    nav .get { color: var(--text); background: var(--panel-2); border: 1px solid var(--line); padding: 6px 14px; border-radius: 8px; font-weight: 600; }
+    nav .get:hover { border-color: var(--faint); }
+    @media (max-width: 680px) { nav .optional { display: none; } }
 
-    .hero { padding: 64px 0 40px; text-align: center; }
-    .badge { display: inline-block; font-size: 0.8rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; margin-bottom: 18px; }
-    h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.1; letter-spacing: -0.025em; margin: 0 auto 16px; max-width: 14em; }
-    .lead { font-size: clamp(1.05rem, 2.4vw, 1.2rem); color: var(--muted); max-width: 36em; margin: 0 auto 32px; }
+    /* Hero */
+    .hero { position: relative; padding: 76px 0 0; text-align: center; }
+    .hero::before {
+      content: ""; position: absolute; inset: -120px 0 auto; height: 620px; z-index: -1;
+      background: radial-gradient(60% 55% at 50% 30%, rgba(109, 110, 246, 0.28), transparent 70%);
+    }
+    .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); border: 1px solid var(--line); background: rgba(20, 22, 29, 0.7); border-radius: 999px; padding: 4px 14px; margin-bottom: 22px; }
+    .badge i { width: 7px; height: 7px; border-radius: 50%; background: #3ccf91; display: inline-block; }
+    h1 { font-size: clamp(2.3rem, 6.4vw, 4rem); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; margin: 0 auto 18px; max-width: 13em; }
+    h1 span { background: linear-gradient(90deg, #a5a6ff, #6d6ef6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { font-size: clamp(1.05rem, 2.3vw, 1.22rem); color: var(--muted); max-width: 36em; margin: 0 auto 34px; }
     .cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
     .button {
       display: inline-flex; align-items: center; gap: 12px; text-align: left;
-      padding: 13px 22px; border-radius: 10px; text-decoration: none; font-weight: 600;
-      background: var(--panel); color: var(--text); border: 1px solid var(--line);
-      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+      padding: 12px 22px; border-radius: 11px; text-decoration: none; font-weight: 600;
+      background: var(--panel-2); color: var(--text); border: 1px solid var(--line);
+      transition: background 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
     }
-    .button:hover { border-color: var(--muted); transform: translateY(-1px); }
+    .button:hover { border-color: var(--faint); transform: translateY(-1px); }
     .button svg { width: 20px; height: 20px; flex: none; }
-    .button small { display: block; font-weight: 400; font-size: 0.8rem; opacity: 0.8; }
-    .button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
-    .button.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
-    .button:focus-visible, nav a:focus-visible, .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-    .fine { font-size: 0.85rem; color: var(--muted); margin: 16px 0 0; }
+    .button small { display: block; font-weight: 400; font-size: 0.78rem; opacity: 0.75; }
+    .button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); box-shadow: 0 8px 30px rgba(109, 110, 246, 0.35); }
+    .button.primary:hover { background: #7c7dff; border-color: #7c7dff; }
+    .fine { font-size: 0.85rem; color: var(--faint); margin: 18px 0 0; }
+    .fine a { color: var(--muted); }
 
-    .shot { margin: 8px auto 0; max-width: 960px; }
-    .shot img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .window { margin: 56px auto 0; max-width: 1040px; border-radius: 12px; border: 1px solid #2c2f3a; background: #000; overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.6), 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 120px rgba(109, 110, 246, 0.18); }
+    .window img { width: 100%; height: auto; }
 
-    section { padding: 72px 0 0; }
-    h2 { font-size: clamp(1.4rem, 3.4vw, 1.8rem); letter-spacing: -0.015em; margin: 0 0 8px; text-align: center; }
-    .sub { color: var(--muted); text-align: center; margin: 0 auto 32px; max-width: 34em; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-    .card { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
-    .card h3 { font-size: 1rem; margin: 12px 0 6px; }
-    .card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
-    .icon { width: 36px; height: 36px; border-radius: 9px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); display: grid; place-items: center; }
-    .icon svg { width: 18px; height: 18px; }
+    /* Sections */
+    section { padding: 110px 0 0; }
+    .eyebrow { color: var(--accent-2); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; margin: 0 0 10px; }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); letter-spacing: -0.025em; line-height: 1.15; margin: 0 0 12px; text-align: center; font-weight: 700; }
+    .sub { color: var(--muted); text-align: center; margin: 0 auto 56px; max-width: 36em; font-size: 1.05rem; }
 
-    .install { max-width: 720px; margin: 0 auto; }
-    .tabs { display: flex; gap: 4px; padding: 4px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; width: fit-content; margin: 0 auto 24px; }
-    .tab { border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600; padding: 8px 20px; border-radius: 7px; cursor: pointer; }
-    .tab[aria-selected="true"] { background: var(--panel); color: var(--text); box-shadow: var(--shadow); }
+    /* Feature videos */
+    .show { display: grid; grid-template-columns: 1fr 1.55fr; gap: 48px; align-items: center; margin-bottom: 88px; }
+    .show:nth-of-type(even) { grid-template-columns: 1.55fr 1fr; }
+    .show:nth-of-type(even) .copy { order: 2; }
+    .show:last-child { margin-bottom: 0; }
+    .show > * { min-width: 0; }
+    .copy h3 { font-size: 1.5rem; letter-spacing: -0.02em; margin: 0 0 10px; line-height: 1.25; }
+    .copy p { color: var(--muted); margin: 0 0 16px; }
+    .copy ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; color: var(--text); font-size: 0.95rem; }
+    .copy li { display: flex; gap: 10px; }
+    .copy li::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%;
+      background: rgba(109, 110, 246, 0.18) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b8cff' stroke-width='3'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center/12px no-repeat; }
+    kbd { font: 600 0.78em Inter, system-ui, sans-serif; background: var(--panel-2); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px; padding: 1px 6px; color: var(--text); }
+    .clip { border-radius: 12px; overflow: hidden; border: 1px solid #2c2f3a; background: #000; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); aspect-ratio: 1280 / 758; }
+    .clip video { width: 100%; height: 100%; object-fit: cover; }
+    @media (max-width: 860px) {
+      .show, .show:nth-of-type(even) { grid-template-columns: 1fr; gap: 24px; margin-bottom: 64px; }
+      .show:nth-of-type(even) .copy { order: 0; }
+    }
+
+    /* Feature grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+    .card h3 { font-size: 1.02rem; margin: 14px 0 6px; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+    .icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(109, 110, 246, 0.14); color: var(--accent-2); display: grid; place-items: center; }
+    .icon svg { width: 19px; height: 19px; }
+
+    /* Install */
+    .install { max-width: 740px; margin: 0 auto; }
+    .tabs { display: flex; gap: 4px; padding: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 11px; width: fit-content; margin: 0 auto 24px; }
+    .tab { border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600; padding: 8px 22px; border-radius: 8px; cursor: pointer; }
+    .tab[aria-selected="true"] { background: var(--panel-2); color: var(--text); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 4px 14px rgba(0,0,0,0.35); }
     ol.steps { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 12px; }
-    ol.steps li { counter-increment: step; position: relative; padding: 18px 20px 18px 64px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 12px; }
-    ol.steps li::before { content: counter(step); position: absolute; left: 20px; top: 18px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--accent-text); font-weight: 700; font-size: 0.9rem; display: grid; place-items: center; }
+    ol.steps li { counter-increment: step; position: relative; padding: 18px 20px 18px 66px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); }
+    ol.steps li::before { content: counter(step); position: absolute; left: 20px; top: 18px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.88rem; display: grid; place-items: center; }
     ol.steps strong { display: block; }
     ol.steps span { color: var(--muted); font-size: 0.94rem; }
-    code { font: 0.86em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; overflow-wrap: anywhere; }
+    code { font: 0.86em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; overflow-wrap: anywhere; color: var(--text); }
     [hidden] { display: none !important; }
 
-    footer { margin-top: 88px; border-top: 1px solid var(--line); padding: 32px 0 40px; font-size: 0.88rem; color: var(--muted); }
-    footer .wrap { display: grid; gap: 16px; }
-    .author { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-    .author a { display: inline-flex; align-items: center; gap: 6px; color: var(--text); text-decoration: none; font-weight: 600; }
-    .author a:hover { color: var(--accent); }
-    .author svg { width: 16px; height: 16px; }
-    .links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .disclaimer { margin: 0; font-size: 0.82rem; }
-    nav .in { display: inline-flex; align-items: center; }
-    nav .in svg { width: 18px; height: 18px; }
-    .maker { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; max-width: 860px; margin: 0 auto; padding: 28px; }
-    .avatar { width: 64px; height: 64px; border-radius: 50%; flex: none; background: var(--accent); color: var(--accent-text); display: grid; place-items: center; font-weight: 700; font-size: 1.4rem; }
+    /* Maker */
+    .maker { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; max-width: 900px; margin: 0 auto; padding: 30px;
+      background: linear-gradient(135deg, rgba(109, 110, 246, 0.12), rgba(20, 22, 29, 0.9) 55%); border: 1px solid var(--line); border-radius: 18px; }
+    .avatar { width: 64px; height: 64px; border-radius: 50%; flex: none; background: linear-gradient(135deg, #8b8cff, #5253d4); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 1.35rem; }
     .maker .text { flex: 1 1 320px; }
-    .maker h2 { text-align: left; font-size: 1.25rem; margin: 0 0 6px; }
+    .maker h2 { text-align: left; font-size: 1.3rem; margin: 0 0 6px; }
     .maker p { margin: 0; color: var(--muted); }
-    .maker .actions { display: flex; flex-wrap: wrap; gap: 10px; }
-    .maker .button { padding: 11px 18px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .actions .button { padding: 10px 18px; }
+
+    footer { margin-top: 110px; border-top: 1px solid var(--line); padding: 32px 0 44px; font-size: 0.87rem; color: var(--faint); }
+    footer .wrap { display: grid; gap: 14px; }
+    .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .foot a { color: var(--muted); text-decoration: none; }
+    .foot a:hover { color: var(--text); }
+    .links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .disclaimer { margin: 0; font-size: 0.8rem; }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <a class="brand" href="#">
-        <span class="logo" aria-hidden="true"><svg viewBox="0 0 16 16" fill="#fff"><rect x="1" y="2" width="6" height="12" rx="1.5"/><rect x="9" y="2" width="6" height="12" rx="1.5" opacity=".7"/></svg></span>
-        ChatDeck
-      </a>
+      <a class="brand" href="#"><img src="media/icon.png" width="30" height="30" alt="">ChatDeck</a>
       <nav aria-label="Main">
         <a class="optional" href="#features">Features</a>
         <a class="optional" href="#install">Install</a>
-        <a href="https://github.com/ErmisCho/chatdeck-releases/releases/latest">Release notes</a>
-        <a class="in" href="https://www.linkedin.com/in/ermischo/" aria-label="Ermis Chorinopoulos on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
+        <a class="optional" href="https://github.com/ErmisCho/chatdeck-releases/releases/latest">Release notes</a>
+        <a class="in" href="https://www.linkedin.com/in/ermischo/" aria-label="The maker on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
+        <a class="get" href="#download">Download</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <div class="hero wrap">
-      <span class="badge" id="version">Free download &middot; Windows and macOS</span>
-      <h1>All your AI chats in one workspace</h1>
-      <p class="lead">ChatDeck puts ChatGPT and Claude side by side, groups conversations by project,
-        and keeps a terminal one tab away. A small desktop app, no browser clutter.</p>
+    <div class="hero wrap" id="download">
+      <span class="badge"><i></i><span id="version">Free for Windows and macOS</span></span>
+      <h1>ChatGPT and Claude, <span>side by side</span></h1>
+      <p class="lead">ChatDeck turns your AI chats into a real workspace: resizable panes, tabs,
+        a group per project, and a terminal right next to the conversation.</p>
       <div class="cta">
         <a class="button" id="windows" href="https://github.com/ErmisCho/chatdeck-releases/releases/latest/download/ChatDeck-windows-setup.exe">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.5v7H3zM11.5 4.4 21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zM11.5 12.5H21V21l-9.5-1.4z"/></svg>
@@ -151,38 +189,84 @@
           <span>Download for Mac<small>Apple Silicon and Intel</small></span>
         </a>
       </div>
-      <p class="fine">Free. Sign in with your own ChatGPT or Claude account.
-        <a href="https://github.com/ErmisCho/chatdeck-releases/releases/latest">All files</a></p>
-    </div>
-
-    <div class="shot wrap">
-      <img src="chatdeck-preview.webp" width="1280" height="720" alt="ChatDeck with two ChatGPT panes side by side">
+      <p class="fine">Free. Sign in with your own ChatGPT or Claude account. &middot; <a href="https://github.com/ErmisCho/chatdeck-releases/releases/latest">All downloads</a></p>
+      <div class="window">
+        <img src="media/hero.webp" width="1280" height="758" alt="ChatDeck with a ChatGPT answer in one pane and a second chat proposing a colour palette in the other">
+      </div>
     </div>
 
     <section id="features">
       <div class="wrap">
+        <p class="eyebrow">See it in action</p>
         <h2>Built for working, not just chatting</h2>
-        <p class="sub">Everything you keep open in a dozen browser tabs, arranged in one window.</p>
+        <p class="sub">Everything you used to keep in a dozen browser tabs, arranged in one window that remembers how you left it.</p>
+
+        <div class="show">
+          <div class="copy">
+            <h3>Split, resize, compare</h3>
+            <p>Put chats next to each other and drag the dividers to fit. Compare answers, or keep a reference open while you work in another.</p>
+            <ul>
+              <li>As many panes as your screen has room for</li>
+              <li>Drag a tab onto a pane to move it there</li>
+              <li>The layout is restored exactly on restart</li>
+            </ul>
+          </div>
+          <div class="clip"><video data-src="media/split.mp4" poster="media/split.webp" muted loop playsinline preload="none" aria-label="Splitting a window into three ChatGPT panes and dragging the dividers"></video></div>
+        </div>
+
+        <div class="show">
+          <div class="copy">
+            <h3>Tabs that behave like tabs</h3>
+            <p>Open a new chat in any pane, switch with a click, and keep terminals next to your conversations.</p>
+            <ul>
+              <li>Reorder, rename and bookmark conversations</li>
+              <li>A tab shows when an answer is ready</li>
+              <li><kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd> finds any tab in any group</li>
+            </ul>
+          </div>
+          <div class="clip"><video data-src="media/tabs.mp4" poster="media/tabs.webp" muted loop playsinline preload="none" aria-label="Opening a new ChatGPT tab, asking a question, and switching between tabs"></video></div>
+        </div>
+
+        <div class="show">
+          <div class="copy">
+            <h3>A group for every project</h3>
+            <p>Each group keeps its own tabs, panes and layout. Switching groups swaps the whole workspace in one click.</p>
+            <ul>
+              <li>Website, research, server: each in its own space</li>
+              <li><kbd>Alt</kbd> <kbd>1</kbd>-<kbd>9</kbd> jumps straight to a group</li>
+              <li>Terminals keep running while you are elsewhere</li>
+            </ul>
+          </div>
+          <div class="clip"><video data-src="media/groups.mp4" poster="media/groups.webp" muted loop playsinline preload="none" aria-label="Switching between the Website, Research and Server groups"></video></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <p class="eyebrow">And more</p>
+        <h2>Small details, all day long</h2>
+        <p class="sub">A native app around the real ChatGPT and Claude pages. Nothing is re-implemented, so everything you have in the browser still works.</p>
         <div class="grid">
           <div class="card">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="8" height="16" rx="2"/><rect x="13" y="4" width="8" height="16" rx="2"/></svg></div>
-            <h3>Side-by-side panes</h3>
-            <p>Split the window and compare answers, or keep a reference chat open while you work in another.</p>
-          </div>
-          <div class="card">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h7l2 2h9v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg></div>
-            <h3>Tab groups per project</h3>
-            <p>Keep each project's conversations together and switch between them in one click.</p>
-          </div>
-          <div class="card">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 4 4-4 4M12 16h7"/></svg></div>
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 4 4-4 4M12 16h7"/></svg></div>
             <h3>Terminal tabs</h3>
-            <p>Open a shell next to your chats: PowerShell on Windows, zsh on Mac.</p>
+            <p>PowerShell on Windows, zsh on Mac, in a tab beside your chats.</p>
           </div>
           <div class="card">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9M12 3v6M12 3l3 3M12 3 9 6"/></svg></div>
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div>
             <h3>ChatGPT and Claude</h3>
-            <p>Use either or both, with your own accounts. Your workspace is restored when you reopen it.</p>
+            <p>Use either or both, with your own accounts, plans and limits.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></div>
+            <h3>Knows when it is done</h3>
+            <p>A ring while an answer is written, a dot and an optional chime when it is ready.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+            <h3>Private by design</h3>
+            <p>No ChatDeck account, no servers, no tracking. Your chats stay with OpenAI and Anthropic.</p>
           </div>
         </div>
       </div>
@@ -190,6 +274,7 @@
 
     <section id="install">
       <div class="wrap install">
+        <p class="eyebrow">Get started</p>
         <h2>Install in a minute</h2>
         <p class="sub">ChatDeck is new and not code-signed yet, so your computer asks once before the first launch.</p>
         <div class="tabs" role="tablist" aria-label="Operating system">
@@ -199,19 +284,20 @@
         <ol class="steps" id="steps-windows" role="tabpanel" aria-labelledby="tab-windows">
           <li><strong>Download and run the installer</strong><span>No administrator rights needed. It installs for you alone.</span></li>
           <li><strong>If Windows says "Windows protected your PC"</strong><span>Choose <em>More info</em>, then <em>Run anyway</em>.</span></li>
-          <li><strong>Sign in and you are set</strong><span>New versions install from Settings inside the app.</span></li>
+          <li><strong>Sign in to ChatGPT or Claude</strong><span>New versions install from Settings inside the app.</span></li>
         </ol>
         <ol class="steps" id="steps-mac" role="tabpanel" aria-labelledby="tab-mac" hidden>
           <li><strong>Open the dmg and drag ChatDeck to Applications</strong><span>One download for Apple Silicon and Intel Macs.</span></li>
           <li><strong>Allow the first launch</strong><span>macOS blocks it once: open <em>System Settings &rsaquo; Privacy &amp; Security</em> and choose <em>Open Anyway</em>.
             If it says the app "is damaged", run <code>xattr -dr com.apple.quarantine /Applications/ChatDeck.app</code> in Terminal.</span></li>
-          <li><strong>Sign in and you are set</strong><span>To update, download the latest dmg from this page.</span></li>
+          <li><strong>Sign in to ChatGPT or Claude</strong><span>To update, download the latest dmg from this page.</span></li>
         </ol>
       </div>
     </section>
+
     <section id="maker">
       <div class="wrap">
-        <div class="card maker">
+        <div class="maker">
           <div class="avatar" aria-hidden="true">EC</div>
           <div class="text">
             <h2>Made by Ermis Chorinopoulos</h2>
@@ -235,9 +321,8 @@
 
   <footer>
     <div class="wrap">
-      <div class="author">
-        <span>Built by <a href="https://www.linkedin.com/in/ermischo/" rel="me noopener">Ermis Chorinopoulos
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-label="LinkedIn"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a></span>
+      <div class="foot">
+        <span>&copy; 2026 Ermis Chorinopoulos &middot; <a href="https://www.linkedin.com/in/ermischo/">LinkedIn</a></span>
         <span class="links">
           <a href="https://github.com/ErmisCho/chatdeck-releases/releases">All releases</a>
           <a href="https://github.com/ErmisCho/chatdeck-releases/issues">Report a problem</a>
@@ -264,6 +349,27 @@
     document.getElementById("tab-windows").onclick = function () { show("windows"); };
     document.getElementById("tab-mac").onclick = function () { show("mac"); };
     show(mac ? "mac" : "windows");
+
+    // Clips load only when scrolled to and play only while visible; with reduced motion they
+    // stay still and get controls instead.
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var videos = document.querySelectorAll("video[data-src]");
+    if (still || !("IntersectionObserver" in window)) {
+      videos.forEach(function (v) { v.src = v.dataset.src; v.controls = true; });
+    } else {
+      var seen = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) {
+            if (!v.src) v.src = v.dataset.src;
+            v.play().catch(function () { v.controls = true; });
+          } else if (v.src) {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.35 });
+      videos.forEach(function (v) { seen.observe(v); });
+    }
 
     // Name the current version; the static badge stays if GitHub is unreachable or rate-limited.
     fetch("https://api.github.com/repos/ErmisCho/chatdeck-releases/releases/latest")
