@@ -45,6 +45,7 @@
     .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
     .note { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
     .note p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .note code { overflow-wrap: anywhere; color: var(--text, inherit); }
     footer { margin-top: 48px; font-size: 0.85rem; color: var(--muted); }
   </style>
 </head>
@@ -59,7 +60,7 @@
         <strong>Download for Windows</strong><span>Windows 10 and 11</span>
       </a>
       <a class="button" id="mac" href="https://github.com/ErmisCho/chatdeck-releases/releases/latest/download/ChatDeck-mac.dmg">
-        <strong>Download for Mac</strong><span>Apple Silicon (M1 and later)</span>
+        <strong>Download for Mac</strong><span>Apple Silicon and Intel</span>
       </a>
     </div>
     <p class="all"><a href="https://github.com/ErmisCho/chatdeck-releases/releases/latest">All files and release notes</a></p>
@@ -78,6 +79,8 @@
           <h2>Mac</h2>
           <p>Open the dmg and drag ChatDeck to Applications. The app is not notarized yet, so macOS blocks the
             first launch: open System Settings, Privacy &amp; Security, and choose Open Anyway.
+            If it says the app "is damaged" instead, run
+            <code>xattr -dr com.apple.quarantine /Applications/ChatDeck.app</code> in Terminal once.
             Updates are manual for now.</p>
         </div>
       </div>
