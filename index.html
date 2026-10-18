@@ -377,7 +377,7 @@
       .then(function (release) {
         if (release && release.tag_name) {
           document.getElementById("version").textContent =
-            "Version " + release.tag_name.replace(/^v/, "") + " · Free for Windows and macOS";
+            "Version " + release.tag_name.replace(/^v/, "") + " · Free during early access";
         }
       })
       .catch(function () {});
