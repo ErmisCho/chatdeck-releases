@@ -129,7 +129,7 @@
       <div class="wrap request">
         <p class="eyebrow">Beta</p>
         <h2>Request beta access</h2>
-        <p class="sub">Leave your email and I'll send you a download link, usually within a day.</p>
+        <p class="sub">Leave your email and I'll send you a download link.</p>
         <form class="signup" id="signup" action="https://formsubmit.co/ermis.chorinopoulos@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="ChatDeck beta request">
           <input type="hidden" name="_template" value="table">
@@ -147,14 +147,9 @@
             <textarea name="use_case" rows="3" placeholder="For example: Claude Code in a terminal next to ChatGPT, one group per client"></textarea>
           </label>
           <fieldset class="pricing">
-            <legend>If ChatDeck became paid one day <span>Optional and nonbinding</span></legend>
-            <div class="pills">
-              <label><input type="radio" name="payment_model" value="One-time purchase"> One-time purchase</label>
-              <label><input type="radio" name="payment_model" value="Subscription"> Subscription</label>
-              <label><input type="radio" name="payment_model" value="No preference"> No preference</label>
-            </div>
-            <label class="field"><b>What would you realistically pay?</b>
-              <select name="price">
+            <legend>If ChatDeck became paid, what would you realistically pay? <span>Optional and nonbinding</span></legend>
+            <label class="field">
+              <select name="price" aria-label="What you would realistically pay">
                 <option value="">Choose an amount</option>
                 <option>Only if it stays free</option>
                 <optgroup label="One-time">
@@ -234,7 +229,7 @@
         .then(function (reply) {
           if (String(reply.success) !== "true") throw new Error();
           signup.classList.add("done");
-          note.textContent = "Thanks! You're on the list. I'll email you a download link soon.";
+          note.textContent = "Thanks! You're on the list. I'll email you a download link.";
         })
         .catch(function () {
           note.textContent = "That did not go through. Please try again in a moment.";
