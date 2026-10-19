@@ -56,6 +56,19 @@
 
         <div class="show">
           <div class="copy">
+            <h3>Eight chats at once, in any arrangement</h3>
+            <p>Keep many tabs open and lay them out the way you work: side by side, stacked, or a full grid.</p>
+            <ul>
+              <li>Split any pane horizontally or vertically</li>
+              <li>Eight tabs in a 4 &times; 2 grid on one screen</li>
+              <li>Chats and terminals mix freely</li>
+            </ul>
+          </div>
+          <div class="clip"><video data-src="media/grid.mp4" poster="media/grid.webp" muted loop playsinline preload="none" aria-label="Eight tabs in one pane rearranged into a grid of four columns and two rows"></video></div>
+        </div>
+
+        <div class="show">
+          <div class="copy">
             <h3>Split, resize, compare</h3>
             <p>Put chats next to each other and drag the dividers to fit. Compare answers, or keep a reference open while you work in another.</p>
             <ul>
@@ -143,13 +156,13 @@
               <label><input type="radio" name="platform" value="Mac" id="platform-mac"> Mac</label>
             </div>
           </fieldset>
-          <label class="field"><b>What would you use ChatDeck for? <span>Optional</span></b>
-            <textarea name="use_case" rows="3" placeholder="For example: Claude Code in a terminal next to ChatGPT, one group per client"></textarea>
+          <label class="field"><b>What would you use ChatDeck for?</b>
+            <textarea name="use_case" rows="3" required placeholder="For example: Claude Code in a terminal next to ChatGPT, one group per client"></textarea>
           </label>
           <fieldset class="pricing">
-            <legend>If ChatDeck became paid, what would you realistically pay? <span>Optional and nonbinding</span></legend>
+            <legend>If ChatDeck became paid, what would you realistically pay? <span>Nonbinding</span></legend>
             <label class="field">
-              <select name="price" aria-label="What you would realistically pay">
+              <select name="price" required aria-label="What you would realistically pay">
                 <option value="">Choose an amount</option>
                 <option>Only if it stays free</option>
                 <optgroup label="One-time">
@@ -215,10 +228,15 @@
     // Pre-select this computer; send without leaving the page (a plain post still works without JavaScript).
     if (/Mac/.test(navigator.platform || navigator.userAgent)) document.getElementById("platform-mac").checked = true;
     var signup = document.getElementById("signup");
+    var note = document.getElementById("signup-note");
+    var button = signup.querySelector("button");
+    // Every field is required: the button wakes up once all of them are filled in.
+    function ready() { button.disabled = !signup.checkValidity(); }
+    signup.addEventListener("input", ready);
+    signup.addEventListener("change", ready);
+    ready();
     signup.addEventListener("submit", function (event) {
       event.preventDefault();
-      var note = document.getElementById("signup-note");
-      var button = signup.querySelector("button");
       button.disabled = true;
       fetch(signup.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
         method: "POST",
@@ -233,7 +251,7 @@
         })
         .catch(function () {
           note.textContent = "That did not go through. Please try again in a moment.";
-          button.disabled = false;
+          ready();
         });
     });
 

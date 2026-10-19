@@ -156,7 +156,7 @@ footer .wrap { display: grid; gap: 14px; }
 .pills label:has(input:checked) { border-color: var(--accent); background: rgba(109, 110, 246, 0.16); color: var(--text); }
 .pills label:has(input:focus-visible) { outline: 2px solid var(--accent-2); outline-offset: 2px; }
 .signup .button { justify-content: center; cursor: pointer; font: inherit; font-weight: 600; }
-.signup .button:disabled { opacity: 0.6; cursor: default; }
+.signup .button:disabled { opacity: 0.4; box-shadow: none; cursor: default; transform: none; }
 .signup .fine { margin: 0; text-align: center; }
 .signup .trap { position: absolute; left: -9999px; }
 .signup.done > :not(#signup-note) { display: none; }
