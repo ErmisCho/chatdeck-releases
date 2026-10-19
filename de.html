@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatDeck - ChatGPT und Claude in einem Desktop-Arbeitsbereich</title>
+  <meta name="description" content="ChatDeck stellt ChatGPT, Claude und Ihr Terminal in frei teilbaren Bereichen nebeneinander, mit Tabs und Projektgruppen. Kostenlose Beta für Windows und macOS.">
+  <meta name="theme-color" content="#0b0c10">
+  <link rel="alternate" hreflang="en" href="https://ermischo.github.io/chatdeck-releases/">
+  <link rel="alternate" hreflang="de" href="https://ermischo.github.io/chatdeck-releases/de.html">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ermischo.github.io/chatdeck-releases/de.html">
+  <meta property="og:title" content="ChatDeck - ChatGPT und Claude in einem Desktop-Arbeitsbereich">
+  <meta property="og:description" content="Bereiche nebeneinander, Tabs, Projektgruppen und ein Terminal. Kostenlose Beta für Windows und macOS.">
+  <meta property="og:image" content="https://ermischo.github.io/chatdeck-releases/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="#"><img src="media/icon.png" width="30" height="30" alt="">ChatDeck</a>
+      <nav aria-label="Hauptmenü">
+        <a class="optional" href="#features">Funktionen</a>
+                <a href="./" hreflang="en" lang="en" title="English">EN</a>
+        <a class="in" href="https://www.linkedin.com/in/ermischo/" aria-label="Der Entwickler auf LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
+        <a class="get" href="#request">Zugang anfragen</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero wrap" id="download">
+      <span class="badge"><i></i><span id="version">Beta-Warteliste offen</span></span>
+      <h1>ChatGPT und Claude, <span>Seite an Seite</span></h1>
+      <p class="lead">Für alle, die mehrere KI-Chats und Agenten gleichzeitig nutzen: Bereiche in jedem Layout,
+        eine Gruppe pro Projekt, Terminals neben den Chats und ein Signal, sobald eine Antwort fertig ist.</p>
+      <div class="cta">
+        <a class="button primary big" href="#request">Beta-Zugang anfragen</a>
+      </div>
+      <p class="fine">Kostenlos während der Beta &middot; Windows und Mac</p>
+      <div class="window">
+        <img src="media/hero.webp" width="1280" height="758" alt="ChatDeck mit einer ChatGPT-Antwort in einem Bereich und einem zweiten Chat, der eine Farbpalette vorschlägt">
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="wrap">
+        <p class="eyebrow">In Aktion</p>
+        <h2>Zum Arbeiten gebaut, nicht nur zum Chatten</h2>
+        <p class="sub">Alles, was früher in einem Dutzend Browser-Tabs lag, in einem Fenster, das sich merkt, wie Sie es verlassen haben.</p>
+
+        <div class="show">
+          <div class="copy">
+            <h3>Acht Chats gleichzeitig, beliebig angeordnet</h3>
+            <p>Ordnen Sie Ihre Tabs so an, wie Sie arbeiten: nebeneinander, übereinander oder als ganzes Raster.</p>
+            <ul>
+              <li>Jeden Bereich horizontal oder vertikal teilen</li>
+              <li>Größe per Trennlinie anpassen</li>
+              <li>Das Layout bleibt nach einem Neustart exakt erhalten</li>
+            </ul>
+          </div>
+          <div class="clip"><video data-src="media/grid.mp4" poster="media/grid.webp" muted loop playsinline preload="none" aria-label="Acht Tabs in einem Bereich werden zu einem Raster aus vier Spalten und zwei Zeilen"></video></div>
+        </div>
+
+        <div class="show">
+          <div class="copy">
+            <h3>Sofort sehen, wenn eine Antwort fertig ist</h3>
+            <p>Stellen Sie mehrere Fragen und arbeiten Sie weiter. Ein Tab zeigt einen Ring, solange die Antwort entsteht, und einen Punkt, sobald sie fertig ist, auf Wunsch mit Signalton.</p>
+            <ul>
+              <li>Neuen Chat in jedem Bereich mit einem Klick öffnen</li>
+              <li>Unterhaltungen sortieren, umbenennen und als Lesezeichen speichern</li>
+              <li><kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>P</kbd> findet jeden Tab in jeder Gruppe</li>
+            </ul>
+          </div>
+          <div class="clip"><video data-src="media/tabs.mp4" poster="media/tabs.webp" muted loop playsinline preload="none" aria-label="Einen neuen ChatGPT-Tab öffnen, eine Frage stellen und zwischen Tabs wechseln"></video></div>
+        </div>
+
+        <div class="show">
+          <div class="copy">
+            <h3>Eine Gruppe für jedes Projekt</h3>
+            <p>Jede Gruppe hat eigene Tabs, Bereiche und ein eigenes Layout. Ein Gruppenwechsel tauscht den ganzen Arbeitsbereich mit einem Klick.</p>
+            <ul>
+              <li>Website, Recherche, Server: alles an seinem Platz</li>
+              <li><kbd>Alt</kbd> <kbd>1</kbd>-<kbd>9</kbd> springt direkt zu einer Gruppe</li>
+              <li>Terminals laufen weiter, während Sie woanders arbeiten</li>
+            </ul>
+          </div>
+          <div class="clip"><video data-src="media/groups.mp4" poster="media/groups.webp" muted loop playsinline preload="none" aria-label="Wechsel zwischen den Gruppen Website, Research und Server"></video></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <p class="eyebrow">Und mehr</p>
+        <h2>Passt zu Ihrer Arbeitsweise</h2>
+        <p class="sub">Eine native Desktop-App, kein weiterer Chat-Dienst.</p>
+        <div class="grid">
+          <div class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 4 4-4 4M12 16h7"/></svg></div>
+            <h3>Terminal-Tabs</h3>
+            <p>PowerShell unter Windows, zsh am Mac. Claude Code oder Codex laufen direkt neben Ihren Chats.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+            <h3>Die echten Websites</h3>
+            <p>ChatGPT und Claude genau wie im Browser, mit Ihren eigenen Abos und Limits. Keine API, nichts nachgebaut.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+            <h3>Windows und Mac</h3>
+            <p>Windows 10 und 11, Macs mit Apple Silicon und Intel. Unter Windows kommen Updates direkt über die App.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+            <h3>Privat aus Prinzip</h3>
+            <p>Kein ChatDeck-Konto, keine Server, kein Tracking. Ihre Chats bleiben bei OpenAI und Anthropic.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="request">
+      <div class="wrap request">
+        <p class="eyebrow">Beta</p>
+        <h2>Beta-Zugang anfragen</h2>
+        <p class="sub">Tragen Sie sich in die Warteliste ein. Ich schicke Ihnen den Download-Link per E-Mail, sobald die Beta startet.</p>
+        <form class="signup" id="signup" action="https://formsubmit.co/488ac7be252b2732117563d1b34f13b7" method="POST">
+          <input type="hidden" name="_subject" value="ChatDeck beta request (DE)">
+          <input type="hidden" name="_template" value="table">
+          <label class="field"><b>E-Mail</b>
+            <input type="email" name="email" required placeholder="sie@firma.at" autocomplete="email">
+          </label>
+          <fieldset>
+            <legend>Ihr Computer</legend>
+            <div class="pills">
+              <label><input type="radio" name="platform" value="Windows" required checked> Windows</label>
+              <label><input type="radio" name="platform" value="Mac" id="platform-mac"> Mac</label>
+            </div>
+          </fieldset>
+          <label class="field"><b>Wofür würden Sie ChatDeck nutzen?</b>
+            <textarea name="use_case" rows="3" required placeholder="Zum Beispiel: Claude Code im Terminal neben ChatGPT, eine Gruppe pro Kunde"></textarea>
+          </label>
+          <fieldset class="pricing">
+            <legend>Falls ChatDeck kostenpflichtig wird: Was würden Sie realistisch zahlen? <span>Unverbindlich</span></legend>
+            <label class="field">
+              <select name="price" required aria-label="Was Sie realistisch zahlen würden">
+                <option value="">Betrag wählen</option>
+                <option>Nur, wenn es kostenlos bleibt</option>
+                <optgroup label="Einmalig">
+                  <option>Unter €10 einmalig</option>
+                  <option>€10–25 einmalig</option>
+                  <option>€25–50 einmalig</option>
+                  <option>Über €50 einmalig</option>
+                </optgroup>
+                <optgroup label="Abo">
+                  <option>Unter €3 pro Monat</option>
+                  <option>€3–6 pro Monat</option>
+                  <option>€6–10 pro Monat</option>
+                  <option>Über €10 pro Monat</option>
+                </optgroup>
+              </select>
+            </label>
+          </fieldset>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="trap">
+          <button class="button primary" type="submit">Beta-Zugang anfragen</button>
+          <p class="fine" id="signup-note">Keine Zahlung, keine Vorbestellung. Die Preisangaben helfen mir nur bei der Planung, und Ihre E-Mail wird für nichts anderes verwendet.</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="maker">
+      <div class="wrap">
+        <div class="maker">
+          <div class="avatar" aria-hidden="true">EC</div>
+          <div class="text">
+            <h2>Entwickelt von Ermis Chorinopoulos</h2>
+            <p>Ich habe ChatDeck von Grund auf selbst entworfen und gebaut, in Rust und Tauri.
+              Ich suche eine Stelle als AI Engineer und freue mich über jedes Gespräch.</p>
+          </div>
+          <div class="actions">
+            <a class="button primary" href="https://www.linkedin.com/in/ermischo/">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+              Auf LinkedIn vernetzen
+            </a>
+            <a class="button" href="https://ermischo.github.io/">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Portfolio
+            </a>
+            <a class="button" href="https://github.com/ErmisCho">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <span>&copy; 2026 Ermis Chorinopoulos &middot; <a href="https://www.linkedin.com/in/ermischo/">LinkedIn</a> &middot; <a href="https://ermischo.github.io/">Portfolio</a></span>
+        <span class="links">
+          <a href="https://github.com/ErmisCho/chatdeck-releases/issues">Problem melden</a>
+        </span>
+      </div>
+      <p class="disclaimer">ChatDeck funktioniert mit ChatGPT und Claude und braucht Ihr eigenes Konto beim jeweiligen Dienst.
+        Es steht in keiner Verbindung zu OpenAI oder Anthropic und wird von ihnen weder unterstützt noch gesponsert.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Pre-select this computer; send without leaving the page (a plain post still works without JavaScript).
+    if (/Mac/.test(navigator.platform || navigator.userAgent)) document.getElementById("platform-mac").checked = true;
+    var signup = document.getElementById("signup");
+    var note = document.getElementById("signup-note");
+    var button = signup.querySelector("button");
+    // Every field is required: the button wakes up once all of them are filled in.
+    function ready() { button.disabled = !signup.checkValidity(); }
+    signup.addEventListener("input", ready);
+    signup.addEventListener("change", ready);
+    ready();
+    signup.addEventListener("submit", function (event) {
+      event.preventDefault();
+      button.disabled = true;
+      fetch(signup.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+        method: "POST",
+        body: JSON.stringify(Object.fromEntries(new FormData(signup))),
+        headers: { "Content-Type": "application/json", Accept: "application/json" }
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (reply) {
+          if (String(reply.success) !== "true") throw new Error();
+          signup.classList.add("done");
+          note.textContent = "Danke! Sie stehen auf der Liste. Ich schicke Ihnen den Download-Link, sobald die Beta startet.";
+        })
+        .catch(function () {
+          note.textContent = "Das hat nicht geklappt. Bitte versuchen Sie es gleich noch einmal.";
+          ready();
+        });
+    });
+
+    // Clips load only when scrolled to and play only while visible; with reduced motion they
+    // stay still and get controls instead.
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var videos = document.querySelectorAll("video[data-src]");
+    if (still || !("IntersectionObserver" in window)) {
+      videos.forEach(function (v) { v.src = v.dataset.src; v.controls = true; });
+    } else {
+      var seen = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) {
+            if (!v.src) v.src = v.dataset.src;
+            v.play().catch(function () { v.controls = true; });
+          } else if (v.src) {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.35 });
+      videos.forEach(function (v) { seen.observe(v); });
+    }
+
+  </script>
+</body>
+</html>
