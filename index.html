@@ -35,7 +35,7 @@
 
   <main>
     <div class="hero wrap" id="download">
-      <span class="badge"><i></i><span id="version">Free during the beta</span></span>
+      <span class="badge"><i></i><span id="version">Beta waitlist open</span></span>
       <h1>ChatGPT and Claude, <span>side by side</span></h1>
       <p class="lead">ChatDeck turns your AI chats into a real workspace: resizable panes, tabs,
         a group per project, and a terminal right next to the conversation.</p>
@@ -129,7 +129,7 @@
       <div class="wrap request">
         <p class="eyebrow">Beta</p>
         <h2>Request beta access</h2>
-        <p class="sub">Leave your email and I'll send you a download link.</p>
+        <p class="sub">Join the waitlist and I'll email you a download link as soon as the beta opens.</p>
         <form class="signup" id="signup" action="https://formsubmit.co/ermis.chorinopoulos@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="ChatDeck beta request">
           <input type="hidden" name="_template" value="table">
@@ -229,7 +229,7 @@
         .then(function (reply) {
           if (String(reply.success) !== "true") throw new Error();
           signup.classList.add("done");
-          note.textContent = "Thanks! You're on the list. I'll email you a download link.";
+          note.textContent = "Thanks! You're on the list. I'll email you a download link as soon as the beta opens.";
         })
         .catch(function () {
           note.textContent = "That did not go through. Please try again in a moment.";
@@ -258,16 +258,6 @@
       videos.forEach(function (v) { seen.observe(v); });
     }
 
-    // Name the current version; the static badge stays if GitHub is unreachable or rate-limited.
-    fetch("https://api.github.com/repos/ErmisCho/chatdeck-releases/releases/latest")
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (release) {
-        if (release && release.tag_name) {
-          document.getElementById("version").textContent =
-            "Version " + release.tag_name.replace(/^v/, "") + " · Free during the beta";
-        }
-      })
-      .catch(function () {});
   </script>
 </body>
 </html>
