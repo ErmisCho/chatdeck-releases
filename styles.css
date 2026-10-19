@@ -37,9 +37,9 @@ nav a { color: var(--muted); text-decoration: none; }
 nav a:hover { color: var(--text); }
 nav .in { display: inline-flex; }
 nav .in svg { width: 19px; height: 19px; }
-nav .get { color: var(--text); background: var(--panel-2); border: 1px solid var(--line); padding: 6px 14px; border-radius: 8px; font-weight: 600; }
+nav .get { color: var(--text); background: var(--panel-2); border: 1px solid var(--line); padding: 6px 14px; border-radius: 8px; font-weight: 600; white-space: nowrap; }
 nav .get:hover { border-color: var(--faint); }
-@media (max-width: 680px) { nav .optional { display: none; } }
+@media (max-width: 680px) { nav .optional { display: none; } nav { gap: 14px; font-size: 0.85rem; } nav .get { padding: 5px 10px; } }
 
 /* Hero */
 .hero { position: relative; padding-top: 76px; text-align: center; }
