@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatDeck - Beta download</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="ChatDeck puts ChatGPT, Claude and your terminal side by side in resizable panes, with tabs and project groups. Free for Windows and macOS.">
+  <meta name="theme-color" content="#0b0c10">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="#"><img src="media/icon.png" width="30" height="30" alt="">ChatDeck</a>
+      <nav aria-label="Main">
+        <a class="optional" href="https://github.com/ErmisCho/chatdeck-releases/releases/latest">Release notes</a>
+        <a class="in" href="https://www.linkedin.com/in/ermischo/" aria-label="The maker on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
+        <a class="get" href="#install">Install</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero wrap">
+      <span class="badge"><i></i><span id="version">Beta</span></span>
+      <h1>Welcome to <span>ChatDeck</span></h1>
+      <p class="lead">Thanks for trying the beta. Download for your computer below; the steps underneath get you
+        past the one-time security prompt.</p>
+      <div class="cta">
+        <a class="button" id="windows" href="https://github.com/ErmisCho/chatdeck-releases/releases/latest/download/ChatDeck-windows-setup.exe">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.5v7H3zM11.5 4.4 21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zM11.5 12.5H21V21l-9.5-1.4z"/></svg>
+          <span>Download for Windows<small>Windows 10 and 11</small></span>
+        </a>
+        <a class="button" id="mac" href="https://github.com/ErmisCho/chatdeck-releases/releases/latest/download/ChatDeck-mac.dmg">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.5-3.9zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
+          <span>Download for Mac<small>Apple Silicon and Intel</small></span>
+        </a>
+      </div>
+      <p class="fine">Something off, or an idea? Reply to the email this link came in. I read every one.</p>
+    </div>
+
+    <section id="install">
+      <div class="wrap install">
+        <p class="eyebrow">Get started</p>
+        <h2>Install in a minute</h2>
+        <p class="sub">ChatDeck is new and not code-signed yet, so your computer asks once before the first launch.</p>
+        <div class="tabs" role="tablist" aria-label="Operating system">
+          <button class="tab" role="tab" id="tab-windows" aria-controls="steps-windows" aria-selected="true">Windows</button>
+          <button class="tab" role="tab" id="tab-mac" aria-controls="steps-mac" aria-selected="false">Mac</button>
+        </div>
+        <ol class="steps" id="steps-windows" role="tabpanel" aria-labelledby="tab-windows">
+          <li><strong>Download and run the installer</strong><span>No administrator rights needed. It installs for you alone.</span></li>
+          <li><strong>If Windows says "Windows protected your PC"</strong><span>Choose <em>More info</em>, then <em>Run anyway</em>.</span></li>
+          <li><strong>Sign in to ChatGPT or Claude</strong><span>New versions install from Settings inside the app.</span></li>
+        </ol>
+        <ol class="steps" id="steps-mac" role="tabpanel" aria-labelledby="tab-mac" hidden>
+          <li><strong>Open the dmg and drag ChatDeck to Applications</strong><span>One download for Apple Silicon and Intel Macs.</span></li>
+          <li><strong>Allow the first launch</strong><span>macOS blocks it once: open <em>System Settings &rsaquo; Privacy &amp; Security</em> and choose <em>Open Anyway</em>.
+            If it says the app "is damaged", run <code>xattr -dr com.apple.quarantine /Applications/ChatDeck.app</code> in Terminal.</span></li>
+          <li><strong>Sign in to ChatGPT or Claude</strong><span>To update, download the latest dmg from this page.</span></li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <span>&copy; 2026 Ermis Chorinopoulos &middot; <a href="https://www.linkedin.com/in/ermischo/">LinkedIn</a></span>
+        <span class="links">
+          <a href="https://github.com/ErmisCho/chatdeck-releases/releases">All releases</a>
+          <a href="https://github.com/ErmisCho/chatdeck-releases/issues">Report a problem</a>
+        </span>
+      </div>
+      <p class="disclaimer">ChatDeck works with ChatGPT and Claude and needs your own account with whichever you use.
+        It is not affiliated with, endorsed by, or sponsored by OpenAI or Anthropic.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Lead with the download and the install steps that match this computer.
+    var mac = /Mac/.test(navigator.platform || navigator.userAgent);
+    var first = document.getElementById(mac ? "mac" : "windows");
+    first.classList.add("primary");
+    first.parentNode.insertBefore(first, first.parentNode.firstChild);
+
+    function show(os) {
+      ["windows", "mac"].forEach(function (name) {
+        document.getElementById("tab-" + name).setAttribute("aria-selected", String(name === os));
+        document.getElementById("steps-" + name).hidden = name !== os;
+      });
+    }
+    document.getElementById("tab-windows").onclick = function () { show("windows"); };
+    document.getElementById("tab-mac").onclick = function () { show("mac"); };
+    show(mac ? "mac" : "windows");
+
+  </script>
+</body>
+</html>
